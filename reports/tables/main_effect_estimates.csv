@@ -1,0 +1,5 @@
+Estimator,Preferred,Status,Risk difference,95% CI lower,95% CI upper,SE,Estimated treated mean,Estimated control mean,Analysis rows,Notes
+Regression adjustment,No,success,0.234926,0.234157,0.235694,0.000392,0.663548,0.428623,28128,mean predicted potential outcome under separate logistic outcome regressions
+Stabilized IPTW,No,success,0.233985,0.216530,0.251439,0.008905,0.662309,0.428325,28128,stabilized IPTW Hajek-style weighted mean contrast; no default truncation
+AIPW,Yes,success,0.235260,0.224048,0.246471,0.005720,0.664047,0.428788,28128,doubly robust AIPW estimator using propensity and separate outcome nuisance models
+Nearest-neighbor matching,No,skipped,,,,,,,,poor overlap diagnostics; matching estimate not reported

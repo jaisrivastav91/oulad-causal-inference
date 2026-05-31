@@ -1,0 +1,218 @@
+{
+  "cohort_size": 28128,
+  "unit_of_analysis": "student x module_presentation record",
+  "primary_window_days": 14,
+  "window_definition": "Window N includes dates 0 through N-1.",
+  "exclusion_counts": [
+    {
+      "stage": "student_info_records",
+      "excluded_count": 0
+    },
+    {
+      "stage": "after_required_table_joins",
+      "excluded_count": 0
+    },
+    {
+      "stage": "after_primary_treatment_eligibility",
+      "excluded_count": 4465
+    }
+  ],
+  "feature_columns": {
+    "baseline_covariates": [
+      "baseline_age_band",
+      "baseline_date_registration",
+      "baseline_disability",
+      "baseline_gender",
+      "baseline_highest_education",
+      "baseline_imd_band",
+      "baseline_missing_date_registration",
+      "baseline_module_presentation",
+      "baseline_module_presentation_length",
+      "baseline_num_of_prev_attempts",
+      "baseline_region",
+      "baseline_registered_before_start",
+      "baseline_studied_credits"
+    ],
+    "early_assessment_load": [
+      "early_assessment_cma_count_14d",
+      "early_assessment_cma_count_21d",
+      "early_assessment_cma_count_7d",
+      "early_assessment_count_14d",
+      "early_assessment_count_21d",
+      "early_assessment_count_7d",
+      "early_assessment_exam_count_14d",
+      "early_assessment_exam_count_21d",
+      "early_assessment_exam_count_7d",
+      "early_assessment_tma_count_14d",
+      "early_assessment_tma_count_21d",
+      "early_assessment_tma_count_7d",
+      "early_assessment_weight_14d",
+      "early_assessment_weight_21d",
+      "early_assessment_weight_7d"
+    ],
+    "early_click_counts": [
+      "early_clicks_7d",
+      "early_clicks_14d",
+      "early_clicks_21d"
+    ],
+    "early_click_z_scores": [
+      "early_clicks_7d_z",
+      "early_clicks_14d_z",
+      "early_clicks_21d_z"
+    ],
+    "treatment_availability": [
+      "treatment_available_7d",
+      "treatment_available_14d",
+      "treatment_available_21d"
+    ],
+    "outcomes": [
+      "outcome_success",
+      "outcome_withdrawn"
+    ]
+  },
+  "treatment_definitions_available": [
+    {
+      "column": "treatment_high_engagement_7d_median",
+      "window_days": 7,
+      "threshold_name": "median",
+      "quantile": 0.5,
+      "score_column": "early_clicks_7d_z",
+      "availability_column": "treatment_available_7d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_7d_top_tertile",
+      "window_days": 7,
+      "threshold_name": "top_tertile",
+      "quantile": 0.6666666666666666,
+      "score_column": "early_clicks_7d_z",
+      "availability_column": "treatment_available_7d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_7d_top_quartile",
+      "window_days": 7,
+      "threshold_name": "top_quartile",
+      "quantile": 0.75,
+      "score_column": "early_clicks_7d_z",
+      "availability_column": "treatment_available_7d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_14d_median",
+      "window_days": 14,
+      "threshold_name": "median",
+      "quantile": 0.5,
+      "score_column": "early_clicks_14d_z",
+      "availability_column": "treatment_available_14d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_14d_top_tertile",
+      "window_days": 14,
+      "threshold_name": "top_tertile",
+      "quantile": 0.6666666666666666,
+      "score_column": "early_clicks_14d_z",
+      "availability_column": "treatment_available_14d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_14d_top_quartile",
+      "window_days": 14,
+      "threshold_name": "top_quartile",
+      "quantile": 0.75,
+      "score_column": "early_clicks_14d_z",
+      "availability_column": "treatment_available_14d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_21d_median",
+      "window_days": 21,
+      "threshold_name": "median",
+      "quantile": 0.5,
+      "score_column": "early_clicks_21d_z",
+      "availability_column": "treatment_available_21d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_21d_top_tertile",
+      "window_days": 21,
+      "threshold_name": "top_tertile",
+      "quantile": 0.6666666666666666,
+      "score_column": "early_clicks_21d_z",
+      "availability_column": "treatment_available_21d",
+      "comparison": ">= cutoff"
+    },
+    {
+      "column": "treatment_high_engagement_21d_top_quartile",
+      "window_days": 21,
+      "threshold_name": "top_quartile",
+      "quantile": 0.75,
+      "score_column": "early_clicks_21d_z",
+      "availability_column": "treatment_available_21d",
+      "comparison": ">= cutoff"
+    }
+  ],
+  "treatment_prevalence": {
+    "treatment_high_engagement_7d_median": {
+      "nonmissing_count": 28128,
+      "treated_count": 14185,
+      "prevalence": 0.504301763367463
+    },
+    "treatment_high_engagement_7d_top_tertile": {
+      "nonmissing_count": 28128,
+      "treated_count": 9461,
+      "prevalence": 0.3363552332195677
+    },
+    "treatment_high_engagement_7d_top_quartile": {
+      "nonmissing_count": 28128,
+      "treated_count": 7079,
+      "prevalence": 0.25167093287827075
+    },
+    "treatment_high_engagement_14d_median": {
+      "nonmissing_count": 28128,
+      "treated_count": 14134,
+      "prevalence": 0.5024886234357224
+    },
+    "treatment_high_engagement_14d_top_tertile": {
+      "nonmissing_count": 28128,
+      "treated_count": 9429,
+      "prevalence": 0.33521757679180886
+    },
+    "treatment_high_engagement_14d_top_quartile": {
+      "nonmissing_count": 28128,
+      "treated_count": 7080,
+      "prevalence": 0.25170648464163825
+    },
+    "treatment_high_engagement_21d_median": {
+      "nonmissing_count": 27913,
+      "treated_count": 14018,
+      "prevalence": 0.5022032744599291
+    },
+    "treatment_high_engagement_21d_top_tertile": {
+      "nonmissing_count": 27913,
+      "treated_count": 9335,
+      "prevalence": 0.33443198509655
+    },
+    "treatment_high_engagement_21d_top_quartile": {
+      "nonmissing_count": 27913,
+      "treated_count": 7014,
+      "prevalence": 0.25128076523483683
+    }
+  },
+  "threshold_cutoff_rows": 198,
+  "post_treatment_variables_excluded_from_baseline": [
+    "studentAssessment.date_submitted",
+    "studentAssessment.score",
+    "studentAssessment.is_banked",
+    "studentVle activity after each treatment window"
+  ],
+  "artifact_paths": {
+    "analytic_cohort": "/Users/js/projects/oulad-causal-inference-main/data/processed/oulad_analytic_cohort.parquet",
+    "cohort_flow_table": "/Users/js/projects/oulad-causal-inference-main/data/processed/cohort_flow_table.csv",
+    "cohort_summary": "/Users/js/projects/oulad-causal-inference-main/data/processed/cohort_summary.json",
+    "treatment_threshold_cutoffs": "/Users/js/projects/oulad-causal-inference-main/data/processed/treatment_threshold_cutoffs.csv",
+    "cohort_flow_plot": "/Users/js/projects/oulad-causal-inference-main/reports/figures/cohort_flow.png",
+    "treatment_prevalence_plot": "/Users/js/projects/oulad-causal-inference-main/reports/figures/treatment_prevalence.png"
+  }
+}

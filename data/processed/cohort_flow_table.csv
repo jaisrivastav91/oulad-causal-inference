@@ -1,0 +1,4 @@
+stage,row_count,excluded_count,description
+student_info_records,32593,0,studentInfo records loaded.
+after_required_table_joins,32593,0,"Dropped records without registration or course metadata; missing_registration=0, missing_course=0."
+after_primary_treatment_eligibility,28128,4465,Dropped records with date_unregistration < 14; missing unregistration dates are retained.

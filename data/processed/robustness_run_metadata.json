@@ -1,0 +1,72 @@
+{
+  "stage": "robustness",
+  "cohort_rows": 28128,
+  "primary_estimand": {
+    "window_days": 14,
+    "threshold_name": "median",
+    "treatment_column": "treatment_high_engagement_14d_median",
+    "outcome_column": "outcome_success"
+  },
+  "grid": {
+    "windows": [
+      7,
+      14,
+      21
+    ],
+    "thresholds": [
+      "median",
+      "top_tertile",
+      "top_quartile"
+    ],
+    "pooled_scenarios": 9
+  },
+  "gates": {
+    "module_min_n": 300,
+    "module_min_treated": 50,
+    "module_min_control": 50,
+    "subgroup_min_n": 500,
+    "subgroup_min_treated": 100,
+    "subgroup_min_control": 100
+  },
+  "scenario_counts": {
+    "window_threshold_success": 9,
+    "module_success": 22,
+    "subgroup_success": 8,
+    "placebo_success": 3,
+    "skipped_checks": 2
+  },
+  "sensitivity": {
+    "policy": "corrected_estimate = primary_estimate - prevalence_difference * outcome_risk_difference",
+    "prevalence_differences": [
+      0.05,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "outcome_risk_differences": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "explains_away_count": 0,
+    "formal_bound": false
+  },
+  "warnings": [
+    "Robustness, subgroup, and placebo checks are diagnostic and do not remove unmeasured-confounding concerns.",
+    "Matching is disabled in robustness grids; detailed rows retain regression adjustment, IPTW, and AIPW.",
+    "The sensitivity grid is illustrative and additive, not a formal Rosenbaum bound or E-value."
+  ],
+  "artifact_paths": {
+    "estimates_long": "/Users/js/projects/oulad-causal-inference-main/data/processed/robustness_estimates_long.csv",
+    "metadata": "/Users/js/projects/oulad-causal-inference-main/data/processed/robustness_run_metadata.json",
+    "window_threshold_table": "/Users/js/projects/oulad-causal-inference-main/reports/tables/robustness_window_threshold_summary.csv",
+    "environment_table": "/Users/js/projects/oulad-causal-inference-main/reports/tables/robustness_environment_summary.csv",
+    "subgroup_placebo_sensitivity_table": "/Users/js/projects/oulad-causal-inference-main/reports/tables/robustness_subgroup_placebo_sensitivity_summary.csv",
+    "window_threshold_figure": "/Users/js/projects/oulad-causal-inference-main/reports/figures/robustness_window_threshold_heatmap.png",
+    "module_figure": "/Users/js/projects/oulad-causal-inference-main/reports/figures/robustness_module_presentation_estimates.png",
+    "subgroup_figure": "/Users/js/projects/oulad-causal-inference-main/reports/figures/robustness_subgroup_estimates.png",
+    "placebo_sensitivity_figure": "/Users/js/projects/oulad-causal-inference-main/reports/figures/robustness_placebo_sensitivity.png",
+    "summary": "/Users/js/projects/oulad-causal-inference-main/docs/robustness_summary.md"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "estimand": {
+    "name": "ATE of high 14-day early engagement on course success",
+    "scale": "risk_difference",
+    "treatment_column": "treatment_high_engagement_14d_median",
+    "outcome_column": "outcome_success",
+    "availability_column": "treatment_available_14d",
+    "adjustment_set_source": "oulad_causal.dag.recommended_baseline_adjustment_set",
+    "adjustment_columns": [
+      "baseline_gender",
+      "baseline_region",
+      "baseline_age_band",
+      "baseline_highest_education",
+      "baseline_imd_band",
+      "baseline_disability",
+      "baseline_num_of_prev_attempts",
+      "baseline_studied_credits",
+      "baseline_date_registration",
+      "baseline_missing_date_registration",
+      "baseline_registered_before_start",
+      "baseline_module_presentation",
+      "baseline_module_presentation_length",
+      "early_assessment_count_14d",
+      "early_assessment_weight_14d",
+      "early_assessment_cma_count_14d",
+      "early_assessment_tma_count_14d",
+      "early_assessment_exam_count_14d"
+    ]
+  },
+  "analysis": {
+    "cohort_rows": 28128,
+    "analysis_rows": 28128,
+    "excluded_unavailable_or_missing_rows": 0,
+    "treated_count": 14134,
+    "control_count": 13994,
+    "outcome_success_count": 15385
+  },
+  "model_settings": {
+    "seed": 245,
+    "treatment_model": {
+      "class": "sklearn.linear_model.LogisticRegression",
+      "max_iter": 1000,
+      "random_state": 245
+    },
+    "outcome_models": {
+      "0": {
+        "class": "LogisticRegression",
+        "max_iter": 1000,
+        "random_state": 245
+      },
+      "1": {
+        "class": "LogisticRegression",
+        "max_iter": 1000,
+        "random_state": 245
+      }
+    },
+    "preprocessing": {
+      "numeric_columns": [
+        "baseline_num_of_prev_attempts",
+        "baseline_studied_credits",
+        "baseline_date_registration",
+        "baseline_missing_date_registration",
+        "baseline_registered_before_start",
+        "baseline_module_presentation_length",
+        "early_assessment_count_14d",
+        "early_assessment_weight_14d",
+        "early_assessment_cma_count_14d",
+        "early_assessment_tma_count_14d",
+        "early_assessment_exam_count_14d"
+      ],
+      "categorical_columns": [
+        "baseline_gender",
+        "baseline_region",
+        "baseline_age_band",
+        "baseline_highest_education",
+        "baseline_imd_band",
+        "baseline_disability",
+        "baseline_module_presentation"
+      ],
+      "feature_count_after_encoding": 69,
+      "categorical_missing_fill_value": "<MISSING>",
+      "numeric_imputation": "median",
+      "numeric_scaling": "standard",
+      "categorical_encoding": "one_hot_drop_none"
+    },
+    "weight_policy": "stabilized IPTW; no default truncation",
+    "propensity_clip_for_computation_only": 0.001,
+    "matching_policy": {
+      "enabled": true,
+      "min_retention": 0.8,
+      "max_abs_logit_distance": 0.5
+    }
+  },
+  "diagnostics": {
+    "propensity_summary": {
+      "all": {
+        "min": 0.0002395934636031293,
+        "p01": 0.21266309096899924,
+        "p05": 0.33778258778101933,
+        "mean": 0.5024509907178345,
+        "median": 0.4990837195017388,
+        "p95": 0.6551745477022332,
+        "p99": 0.7108283735238383,
+        "max": 0.8535565130930745
+      },
+      "treated": {
+        "min": 0.06199560368146554,
+        "p01": 0.2596865059566196,
+        "p05": 0.37537298594299057,
+        "mean": 0.521381277570339,
+        "median": 0.5152188264555988,
+        "p95": 0.668347869542987,
+        "p99": 0.7208034885419117,
+        "max": 0.8535565130930745
+      },
+      "control": {
+        "min": 0.0002395934636031293,
+        "p01": 0.17809590136033984,
+        "p05": 0.31058411374776995,
+        "mean": 0.48333131983221944,
+        "median": 0.4848960979723028,
+        "p95": 0.6364441297533943,
+        "p99": 0.692611062691059,
+        "max": 0.8429898035720221
+      }
+    },
+    "common_support": {
+      "lower": 0.06199560368146554,
+      "upper": 0.8429898035720221,
+      "outside_count": 14,
+      "outside_share": 0.0004977246871444823
+    },
+    "stabilized_weight_summary": {
+      "min": 0.4980093859502278,
+      "p01": 0.645094858949689,
+      "p05": 0.7404815028572627,
+      "mean": 1.0007568939848028,
+      "median": 0.9704378808464508,
+      "p95": 1.3560765583664707,
+      "p99": 1.719711701593147,
+      "max": 8.105229945296081
+    },
+    "effective_sample_size": 26694.299162314917,
+    "propensity_clip_epsilon": 0.001,
+    "propensity_scores_clipped_for_computation_count": 5,
+    "poor_overlap_by_propensity": true,
+    "poor_overlap_by_common_support": false,
+    "max_abs_smd_after_weighting": 0.02233963239830077,
+    "poor_balance_after_weighting": false,
+    "poor_overlap": true
+  },
+  "warnings": [
+    "Overlap or post-weighting balance diagnostics were flagged as poor.",
+    "Some propensity scores were clipped only for finite arithmetic; weights were not otherwise truncated.",
+    "Nearest-neighbor matching skipped: poor overlap diagnostics; matching estimate not reported."
+  ],
+  "artifact_paths": {
+    "effect_estimates": "/Users/js/projects/oulad-causal-inference-main/data/processed/effect_estimates_main.csv",
+    "balance_table": "/Users/js/projects/oulad-causal-inference-main/data/processed/balance_table_main.csv",
+    "metadata": "/Users/js/projects/oulad-causal-inference-main/data/processed/estimation_run_metadata.json",
+    "overlap_plot": "/Users/js/projects/oulad-causal-inference-main/reports/figures/overlap_plot.png",
+    "love_plot": "/Users/js/projects/oulad-causal-inference-main/reports/figures/love_plot_main.png",
+    "summary": "/Users/js/projects/oulad-causal-inference-main/docs/estimation_summary.md"
+  }
+}

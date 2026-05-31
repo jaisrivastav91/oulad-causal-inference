@@ -1,0 +1,243 @@
+metadata:
+  name: oulad_primary_early_engagement_dag
+  description: Domain-informed DAG for the effect of high 14-day online engagement
+    on course success in the OULAD analytic cohort.
+  primary_treatment:
+    node: early_engagement_14d
+    column: treatment_high_engagement_14d_median
+    score_column: early_clicks_14d_z
+    window_days: 14
+    threshold: within-module-presentation median
+  primary_outcome:
+    node: final_result_success
+    column: outcome_success
+  latent_placeholders:
+  - id: motivation_time_availability
+    label: Motivation / time availability
+    observed: false
+    estimable: false
+    description: Unmeasured student motivation, available study time, outside support,
+      and competing obligations may affect early engagement and course success.
+nodes:
+- id: gender
+  label: Gender
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_gender
+  description: Pre-treatment student demographic field.
+- id: region
+  label: Region
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_region
+  description: Pre-treatment student regional context.
+- id: age_band
+  label: Age band
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_age_band
+  description: Pre-treatment student age category.
+- id: highest_education
+  label: Highest education
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_highest_education
+  description: Pre-treatment educational attainment.
+- id: imd_band
+  label: IMD band
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_imd_band
+  description: Area-level deprivation band recorded before treatment.
+- id: disability
+  label: Disability
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_disability
+  description: Pre-treatment disability indicator.
+- id: prior_attempts
+  label: Prior attempts
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_num_of_prev_attempts
+  description: Number of previous attempts before the current presentation.
+- id: studied_credits
+  label: Studied credits
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_studied_credits
+  description: Planned study load at registration.
+- id: registration_timing
+  label: Registration timing
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_date_registration
+  - baseline_missing_date_registration
+  - baseline_registered_before_start
+  description: Registration timing features available before the engagement window.
+- id: module_presentation
+  label: Module presentation
+  role: confounder
+  observed: true
+  cohort_columns:
+  - baseline_module_presentation
+  - baseline_module_presentation_length
+  description: Course and presentation context, including presentation length.
+- id: early_assessment_load
+  label: Scheduled early assessment load
+  role: confounder
+  observed: true
+  cohort_columns:
+  - early_assessment_count_14d
+  - early_assessment_weight_14d
+  - early_assessment_cma_count_14d
+  - early_assessment_tma_count_14d
+  - early_assessment_exam_count_14d
+  description: Assessment due dates and weights scheduled during days 0 through 13.
+- id: early_engagement_14d
+  label: High early engagement, 14d
+  role: treatment
+  observed: true
+  cohort_columns:
+  - treatment_high_engagement_14d_median
+  - early_clicks_14d_z
+  description: Within-module-presentation normalized VLE activity in days 0 through
+    13.
+- id: later_assessment_behavior
+  label: Later assessment behavior
+  role: mediator
+  observed: false
+  cohort_columns: []
+  description: Post-treatment submissions, scores, and banked status; intentionally
+    not included in the baseline adjustment set.
+- id: final_result_success
+  label: Final result success
+  role: outcome
+  observed: true
+  cohort_columns:
+  - outcome_success
+  description: Pass or distinction versus fail or withdrawn.
+edges:
+- source: gender
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: gender
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: region
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: region
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: age_band
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: age_band
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: highest_education
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: highest_education
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: imd_band
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: imd_band
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: disability
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: disability
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: prior_attempts
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: prior_attempts
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: studied_credits
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: studied_credits
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: registration_timing
+  target: early_engagement_14d
+  description: Baseline variable may affect engagement and success.
+- source: registration_timing
+  target: final_result_success
+  description: Baseline variable may affect engagement and success.
+- source: module_presentation
+  target: early_assessment_load
+  description: Assessment schedules vary by module presentation.
+- source: module_presentation
+  target: early_engagement_14d
+  description: Presentation structure affects expected early activity.
+- source: module_presentation
+  target: final_result_success
+  description: Course context affects success rates.
+- source: early_assessment_load
+  target: early_engagement_14d
+  description: Scheduled early deadlines can increase early VLE activity.
+- source: early_assessment_load
+  target: final_result_success
+  description: Early workload may affect success independent of VLE clicks.
+- source: early_engagement_14d
+  target: later_assessment_behavior
+  description: Early engagement may shape later submission and score behavior.
+- source: later_assessment_behavior
+  target: final_result_success
+  description: Later submissions and scores are on the post-treatment pathway.
+- source: early_engagement_14d
+  target: final_result_success
+  description: Primary total-effect path from early engagement to success.
+recommended_adjustment_set:
+- baseline_gender
+- baseline_region
+- baseline_age_band
+- baseline_highest_education
+- baseline_imd_band
+- baseline_disability
+- baseline_num_of_prev_attempts
+- baseline_studied_credits
+- baseline_date_registration
+- baseline_missing_date_registration
+- baseline_registered_before_start
+- baseline_module_presentation
+- baseline_module_presentation_length
+- early_assessment_count_14d
+- early_assessment_weight_14d
+- early_assessment_cma_count_14d
+- early_assessment_tma_count_14d
+- early_assessment_exam_count_14d
+discovery_variable_list:
+- baseline_gender
+- baseline_region
+- baseline_age_band
+- baseline_highest_education
+- baseline_imd_band
+- baseline_disability
+- baseline_num_of_prev_attempts
+- baseline_studied_credits
+- baseline_registered_before_start
+- baseline_module_presentation
+- baseline_module_presentation_length
+- early_assessment_count_14d
+- early_assessment_weight_14d
+- early_clicks_14d_z
+- treatment_high_engagement_14d_median
+- outcome_success

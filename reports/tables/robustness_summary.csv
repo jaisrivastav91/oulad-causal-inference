@@ -1,0 +1,10 @@
+Window days,Threshold,Status,AIPW risk difference,Analysis rows,Treated rows,Control rows,Overlap flag
+7,Median,success,0.203618,28128,14185,13943,Flagged
+7,Top tertile,success,0.194479,28128,9461,18667,Flagged
+7,Top quartile,success,0.196320,28128,7079,21049,Flagged
+14,Median,success,0.235260,28128,14134,13994,Flagged
+14,Top tertile,success,0.218716,28128,9429,18699,Flagged
+14,Top quartile,success,0.218022,28128,7080,21048,Flagged
+21,Median,success,0.236357,27913,14018,13895,Flagged
+21,Top tertile,success,0.224888,27913,9335,18578,Flagged
+21,Top quartile,success,0.219158,27913,7014,20899,Flagged

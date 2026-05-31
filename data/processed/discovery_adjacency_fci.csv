@@ -1,0 +1,13 @@
+,baseline_gender,baseline_age_band,baseline_highest_education,baseline_imd_band,baseline_disability,baseline_num_of_prev_attempts,baseline_studied_credits,baseline_registered_before_start,baseline_module_presentation_length,early_assessment_weight_14d,treatment_high_engagement_14d_median,outcome_success
+baseline_gender,0,1,1,1,0,0,1,0,-1,0,0,0
+baseline_age_band,1,0,-1,1,0,0,1,0,0,0,1,0
+baseline_highest_education,1,1,0,1,0,0,1,0,0,0,0,1
+baseline_imd_band,1,-1,-1,0,-1,0,0,0,0,0,0,1
+baseline_disability,0,0,0,1,0,-1,0,0,0,0,0,0
+baseline_num_of_prev_attempts,0,0,0,0,1,0,-1,0,1,0,1,-1
+baseline_studied_credits,1,1,1,0,0,1,0,0,1,0,0,1
+baseline_registered_before_start,0,0,0,0,0,0,0,0,0,0,2,0
+baseline_module_presentation_length,1,0,0,0,0,1,1,0,0,1,0,1
+early_assessment_weight_14d,0,0,0,0,0,0,0,0,2,0,0,0
+treatment_high_engagement_14d_median,0,1,0,0,0,1,0,1,0,0,0,1
+outcome_success,0,0,1,1,0,1,1,0,1,0,1,0

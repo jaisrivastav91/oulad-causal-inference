@@ -1,0 +1,155 @@
+{
+  "variables": [
+    "baseline_gender",
+    "baseline_age_band",
+    "baseline_highest_education",
+    "baseline_imd_band",
+    "baseline_disability",
+    "baseline_num_of_prev_attempts",
+    "baseline_studied_credits",
+    "baseline_registered_before_start",
+    "baseline_module_presentation_length",
+    "early_assessment_weight_14d",
+    "treatment_high_engagement_14d_median",
+    "outcome_success"
+  ],
+  "row_count": 28128,
+  "preprocessing_note": "Causal-learn PC/FCI/GES are run on a reduced discrete matrix. Ordinal fields use explicit orderings, nominal/binary fields use documented category codes, and studied credits are quantile-binned.",
+  "columns": {
+    "baseline_gender": {
+      "preprocessing": "nominal_category_codes",
+      "mapping": {
+        "F": 0,
+        "M": 1
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "baseline_age_band": {
+      "preprocessing": "explicit_ordinal",
+      "mapping": {
+        "0-35": 0,
+        "35-55": 1,
+        "55<=": 2
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "baseline_highest_education": {
+      "preprocessing": "explicit_ordinal",
+      "mapping": {
+        "No Formal quals": 0,
+        "Lower Than A Level": 1,
+        "A Level or Equivalent": 2,
+        "HE Qualification": 3,
+        "Post Graduate Qualification": 4
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "baseline_imd_band": {
+      "preprocessing": "explicit_ordinal_imd_lower_bound",
+      "mapping": {
+        "0-10%": 0,
+        "10-20": 1,
+        "20-30%": 2,
+        "30-40%": 3,
+        "40-50%": 4,
+        "50-60%": 5,
+        "60-70%": 6,
+        "70-80%": 7,
+        "80-90%": 8,
+        "90-100%": 9,
+        "<MISSING>": -1
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "baseline_disability": {
+      "preprocessing": "nominal_category_codes",
+      "mapping": {
+        "N": 0,
+        "Y": 1
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "baseline_num_of_prev_attempts": {
+      "preprocessing": "ordered_numeric_state_codes",
+      "mapping": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "baseline_studied_credits": {
+      "preprocessing": "quantile_bins",
+      "requested_bins": 4,
+      "actual_bins": 3,
+      "bin_intervals": [
+        "(29.999, 60.0]",
+        "(60.0, 90.0]",
+        "(90.0, 630.0]"
+      ],
+      "missing_count": 0,
+      "missing_code": -1,
+      "column": "baseline_studied_credits"
+    },
+    "baseline_registered_before_start": {
+      "preprocessing": "binary_integer_state",
+      "mapping": {
+        "0": 0,
+        "1": 1
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "baseline_module_presentation_length": {
+      "preprocessing": "ordered_numeric_state_codes",
+      "mapping": {
+        "234": 0,
+        "240": 1,
+        "241": 2,
+        "261": 3,
+        "262": 4,
+        "268": 5,
+        "269": 6
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "early_assessment_weight_14d": {
+      "preprocessing": "ordered_numeric_state_codes",
+      "mapping": {
+        "0": 0,
+        "5": 1
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "treatment_high_engagement_14d_median": {
+      "preprocessing": "binary_integer_state",
+      "mapping": {
+        "0": 0,
+        "1": 1
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    },
+    "outcome_success": {
+      "preprocessing": "binary_integer_state",
+      "mapping": {
+        "0": 0,
+        "1": 1
+      },
+      "missing_count": 0,
+      "missing_code": -1
+    }
+  }
+}

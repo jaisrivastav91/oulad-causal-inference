@@ -1,0 +1,60 @@
+{
+  "cohort_path": "/Users/js/projects/oulad-causal-inference-main/data/processed/oulad_analytic_cohort.parquet",
+  "row_count": 28128,
+  "variables": [
+    "baseline_gender",
+    "baseline_age_band",
+    "baseline_highest_education",
+    "baseline_imd_band",
+    "baseline_disability",
+    "baseline_num_of_prev_attempts",
+    "baseline_studied_credits",
+    "baseline_registered_before_start",
+    "baseline_module_presentation_length",
+    "early_assessment_weight_14d",
+    "treatment_high_engagement_14d_median",
+    "outcome_success"
+  ],
+  "alpha": 0.01,
+  "seed": 245,
+  "stability_reps": 20,
+  "stability_sample_size": 3000,
+  "methods": {
+    "pc": {
+      "status": "success",
+      "seconds": 1.412,
+      "edge_count": 27,
+      "stability_run": false
+    },
+    "fci": {
+      "status": "success",
+      "seconds": 1.183,
+      "edge_count": 25,
+      "stability_run": false
+    },
+    "ges": {
+      "status": "success",
+      "seconds": 2.535,
+      "edge_count": 19,
+      "stability_run": false
+    }
+  },
+  "artifacts": {
+    "analysis_data": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_analysis_data.parquet",
+    "preprocessing_map": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_preprocessing_map.json",
+    "combined_edges": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_edges.csv",
+    "edges_pc": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_edges_pc.csv",
+    "edges_fci": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_edges_fci.csv",
+    "edges_ges": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_edges_ges.csv",
+    "adjacency_pc": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_adjacency_pc.csv",
+    "adjacency_fci": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_adjacency_fci.csv",
+    "adjacency_ges": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_adjacency_ges.csv",
+    "figure_pc": "/Users/js/projects/oulad-causal-inference-main/reports/figures/discovery_pc.png",
+    "figure_fci": "/Users/js/projects/oulad-causal-inference-main/reports/figures/discovery_fci.png",
+    "figure_ges": "/Users/js/projects/oulad-causal-inference-main/reports/figures/discovery_ges.png",
+    "stability_edges": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_stability_edges.csv",
+    "hand_dag_comparison": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_hand_dag_comparison.csv",
+    "metadata": "/Users/js/projects/oulad-causal-inference-main/data/processed/discovery_run_metadata.json",
+    "summary": "/Users/js/projects/oulad-causal-inference-main/docs/discovery_summary.md"
+  }
+}
